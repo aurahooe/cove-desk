@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cove — the desk by the water</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="tide" aria-hidden="true"></div>
+  <header class="mast">
+    <a class="mark" href="#board"><span class="mark-dot"></span>Cove</a>
+    <nav class="nav">
+      <a href="#board">Board</a>
+      <a href="#hours">This hour</a>
+      <a href="#desk">Your desk</a>
+    </nav>
+    <div class="session" id="session"></div>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="kicker" id="clock">—</p>
+      <h1>A small desk that turns over every hour.</h1>
+      <p class="lede">Write a slip. Keep it in the drawer, or pin it to the public board. Each hour the cove hangs a new edition — a short piece from the house.</p>
+      <div class="hero-actions">
+        <a class="btn solid" href="#desk">Leave a slip</a>
+        <a class="btn ghost" href="#board">Read the board</a>
+      </div>
+    </section>
+    <section id="hours" class="hour-wrap">
+      <article class="hour-card" id="hourCard">
+        <p class="hour-meta">This hour</p>
+        <h2 id="hourHeadline">Loading the tide…</h2>
+        <p id="hourBody"></p>
+      </article>
+      <aside class="hour-rail">
+        <p class="rail-label">Earlier hours</p>
+        <ol id="hourList" class="hour-list"></ol>
+      </aside>
+    </section>
+    <section id="board" class="board">
+      <div class="section-head">
+        <h2>The public board</h2>
+        <p>Anything marked public hangs here. Private slips stay with their author.</p>
+      </div>
+      <div id="boardGrid" class="grid"></div>
+    </section>
+    <section id="desk" class="desk">
+      <div class="section-head">
+        <h2>Your desk</h2>
+        <p id="deskHint">Sign in to keep slips. Public ones appear on the board immediately.</p>
+      </div>
+      <div id="authPanel" class="auth-panel"></div>
+      <form id="slipForm" class="slip-form hidden">
+        <label>Title<input name="title" maxlength="80" required placeholder="A heading that can sit on a nail" /></label>
+        <label>The slip<textarea name="body" rows="6" maxlength="2400" required placeholder="What you actually meant to say."></textarea></label>
+        <label class="check"><input type="checkbox" name="is_public" /> Hang this on the public board</label>
+        <button class="btn solid" type="submit">Save slip</button>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+      <div id="mySlips" class="my-slips"></div>
+    </section>
+  </main>
+  <footer class="foot"><p>Cove is a living room on the web. The house adds a new hour, on the hour.</p></footer>
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
